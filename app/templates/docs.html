@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SF Movies: API Documentation</title>
+  </head>
+  <style>
+    table,th,td
+    {
+    border:1px solid black;
+    border-collapse:collapse
+    }
+  </style>
+  <body>
+    <h1>SF Movies: API Documentation</h1>
+    <p>This API exposes one resource which can only be called with GET:</p>
+    <table border="1">
+      <tr><td><b>Resource</b></td><td><b>GET</b></td></tr>
+      <tr><td><code>/sfmovies/api/v1/movies</code></td><td>Returns a list of
+      movie locations represented as JSON objects: <code>{ 'movies' : [...]
+      }.</td></tr>
+      <tr><td><code>/sfmovies/api/v1/movies/[ID]</code></td><td>Returns the
+      movie location with the specified [ID] as a JSON object: <code>{ 'movie' :
+      {...} }</td></tr>
+    </table>
+    <p>A movie location object has the following fields:</p>
+    <table border="1", style="width:400px">
+      <tr><td><b>Field</b></td><td><b>Type</b></td></tr>
+      <tr><td>id</td><td>int</td></tr>
+      <tr><td>title</td><td>string</td></tr>
+      <tr><td>year</td><td>int</td></tr>
+      <tr><td>location</td><td>string</td></tr>
+      <tr><td>latitude</td><td>float</td></tr>
+      <tr><td>longitude</td><td>float</td></tr>
+      <tr><td>fun_fact</td><td>string</td></tr>
+      <tr><td>director</td><td>string</td></tr>
+      <tr><td>writer</td><td>string</td></tr>
+      <tr><td>distributor</td><td>string</td></tr>
+      <tr><td>production_company</td><td>string</td></tr>
+      <tr><td>actor_1</td><td>string</td></tr>
+      <tr><td>actor_2</td><td>string</td></tr>
+      <tr><td>actor_3</td><td>string</td></tr>
+      <tr><td>links</td><td>JSON array</td></tr>
+    </table>
+    <p>Furthermore, the resource <code>/sfmovies/api/v1/movies</code> takes the
+    following optional parameters:</p>
+    <table border="1", style="width:1000px">
+      <tr><td><b>Parameter</b></td><td><b>Description</b></td><td><b>Example</b></tr>
+      <tr><td>Filtering:</td><td width="40%">Filters the result on a specific field,
+      returning all movie locations meeting the
+      requirement.</td><td><code>/sfmovies/api/v1/movies?year>=1958</code><br/><code>/sfmovies/api/v1/movies?title=The+Rock</code></td></tr>
+      <tr><td>Sorting:</td><td width="40%">Sorts the result based on the
+      specified field and its
+      order.</td><td><code>/sfmovies/api/v1/movies?sort=-year</code><br/><code>/sfmovies/api/v1/movies?sort=director</code></td></tr>
+      <tr><td>Field selection:</td><td>Selects the fields to be returned for
+      each movie location
+      object.</td><td><code>/sfmovies/api/v1/movies?fields=title,year,actor_1</code><br/><code>/sfmovies/api/v1/movies?fields=location,latitude,longitude</code></td></tr>
+      <tr><td>Pagination:</td><td>Limits the number of results and their
+      offset.</td><td><code>/sfmovies/api/v1/movies?limit=20</code><br/><code>/sfmovies/api/v1/movies?offset=5</code></td></tr>
+    </table>
+    <p>Each of which can be combined to form more complex queries like:</p><br/>
+    <code>/sfmovies/api/v1/movies?director=Woody+Allen&fields=title,year,actor_1&sort=-year</code><br/>
+    <p>which returns all locations for movies directed by Woody Allen sorted by
+    year (descending) and where only the title, year and actor fields are
+    included.</p>
+    <p>If a wrong URL or query string is supplied, a corresponding HTTP error is
+    returned along with a JSON error object: <code>{ 'error' : {...}
+    }</code>.</p>
+    <p>An error object has the following fields:</p>
+    <table border="1", style="width:400px">
+      <tr><td><b>Field</b></td><td><b>Type</b></td></tr>
+      <tr><td>status_code</td><td>int</td></tr>
+      <tr><td>message</td><td>string</td></tr>
+      <tr><td>links</td><td>JSON array</td></tr>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"/>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWp5uus_2-bbUI9LA4VkBZhFgj6u6OeGE"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-1.11.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-ui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='locations.js') }}"></script>
+  </head>
+  <body>
+    <div id="search-bar">
+      <input id="movie-input" class="controls"
+             type="text" placeholder="Insert movie title">
+    </div>
+    <div id="map-canvas">
+    </div>
+  </body>
+</html>
