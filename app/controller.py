@@ -113,9 +113,7 @@ def fetch_movies(parameters):
         query = offset_query_result(query, parameters)
 
     movies = query.all()
-    movies = map(lambda movie: jsonify_movie_location(movie), movies)
- 
-    return jsonify({'movies': movies})
+    return  map(lambda movie: jsonify_movie_location(movie), movies)
 
 def fetch_movie(movie_id):
     """Return a JSON representation of a movie location shot in San Francisco.

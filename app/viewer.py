@@ -116,8 +116,7 @@ def get_movies():
             parameters[arg[0]] = arg[1]
 
     print parameters
-
-    return controller.fetch_movies(parameters)
+    return jsonify({'movies': controller.fetch_movies(parameters)})
 
 @app.route('/sfmovies/api/v1/movies/<int:movie_id>', methods=['GET'])
 def get_movie(movie_id):
