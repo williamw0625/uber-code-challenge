@@ -11,7 +11,7 @@ from app import errors
 from app import controller
 from controller import fetch_movies, fetch_movie
 
-from errors import InvalidUsage
+from error_displayer import InvalidUsage
 from models import MovieLocation
 import urllib2
 

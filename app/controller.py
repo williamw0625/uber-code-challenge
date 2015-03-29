@@ -6,7 +6,7 @@ from app import app
 from app import models
 from app import db
 from app import errors
-from errors import InvalidUsage
+from error_displayer import InvalidUsage
 from models import MovieLocation
 import urllib2
 
