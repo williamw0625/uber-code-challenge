@@ -10,11 +10,11 @@ The solution mainly focuses on back-end and considers the functions claimed by t
 
 Online part:
 
-app/viewer.py: view layer, for html send and recv, render web page, call functions provided by the controller layer
+app/viewer.py: view layer, for html request send and recv, render web page, call functions provided by the controller layer
 
 app/controller.py: control layer, for process data from the model layer and return back to the viewer layer
 
-app/models.py: model layer, for return the data from db
+app/models.py: model layer, for return the data from postgre db. For simplicity, there is one table movie_location in the existing db.
 
 app/error_displayer: for managing the internal error
 
@@ -27,9 +27,10 @@ data_importer.py: give the json file with long/lat, dump them into the database
 Future Improvement:
 
 Online parts
+
 1) need logger.py to capture all the behaviors of users for future analysis. These data will be used for data mining projects. 
 
-2) As a project used by many users, we need to load balancer in front of web servers.
+2) As a project used by many users, we need to load balancer in front of web servers. According to real QPS, we need more web servers to accommodate more traffic.  
 
 3) The data provided by the database need to be cached properly, in redis/memcached/hbase. 
 
